@@ -1,2 +1,2 @@
 # eGenomeWalking
-To extend partial CDS sequence with transcriptome sequencing reads
+Lengthen the partial CDS sequences to full length with transcriptome sequencing reads
