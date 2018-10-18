@@ -85,7 +85,7 @@ def prepare_dic():
 
 def blast_parse():
   	os.mkdir('blast_parse_out')
-	os.system('/PUBLIC/software/public/Alignment/ncbi-blast-2.2.28+/bin/blastn -query query.fasta -out egw.out.xml -db DB.fa -outfmt 5 -evalue 1e-8 -num_threads 4')
+	os.system('blastn -query query.fasta -out egw.out.xml -db DB.fa -outfmt 5 -evalue 1e-8 -num_threads 4')
 	assert os.path.isfile(root+'/egw.out.xml')
 	f = open(root+'/egw.out.xml','r').read()
 	tmp_list = re.findall('<Iteration>[\s\S]+?</Iteration>',f)
@@ -102,7 +102,7 @@ def blast_parse():
 
 def mafft_align(blastout):
 	mafftout = blastout.replace('blastout','mafftout')
-	os.system('/BJPROJ/RNA/zhangfei/test/MAFFT/mafft-7.305-with-extensions/scripts/mafft --inputorder --adjustdirection --anysymbol --auto  {blastout} > {mafftout}'.format(blastout=blastout,mafftout=mafftout))
+	os.system('mafft --inputorder --adjustdirection --anysymbol --auto  {blastout} > {mafftout}'.format(blastout=blastout,mafftout=mafftout))
 
 def prolong(mafftout):
 #------- prepare
